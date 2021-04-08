@@ -8,7 +8,6 @@ Ce projet est une API REST pour gérer une ludothèque (une collection de jeux d
 - NPM
 - [Sqitch 0.9999+](https://sqitch.org/download/)
 - PostgreSQL 12.6+
-- 
 
 ## Installation
 
