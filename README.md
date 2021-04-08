@@ -33,6 +33,14 @@ sqitch deploy db:ph:boardgame
 
 > Pensez à configurer PostgreSQL (ou à fournir les variables d'environnement nécessaires) pour que les commandes `createdb` et `sqitch` puissent s'exécuter correctement.
 
+## Données de démonstration
+
+Afin de charger quelques données de test, lancer la commande suivante
+
+```bash
+psql -d boardgame -f seeding.sql
+```
+
 ## Lancement
 
 ```bash
