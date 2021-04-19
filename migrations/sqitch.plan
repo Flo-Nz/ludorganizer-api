@@ -2,3 +2,4 @@
 %project=pf_boardgames
 
 init 2021-04-08T12:01:08Z Etudiant O'clock <student@teleporter> # structure initiale
+api/insert 2021-04-08T12:55:18Z Etudiant O'clock <student@teleporter> # ajout d'une fonction d'insertion
