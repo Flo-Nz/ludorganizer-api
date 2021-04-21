@@ -3,3 +3,4 @@
 
 init 2021-04-08T12:01:08Z Etudiant O'clock <student@teleporter> # structure initiale
 api/insert 2021-04-08T12:55:18Z Etudiant O'clock <student@teleporter> # ajout d'une fonction d'insertion
+api/update 2021-04-21T12:23:09Z Etudiant O'clock <student@teleporter> # Ajout de la fonction sql update boardgame

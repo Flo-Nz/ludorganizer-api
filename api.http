@@ -16,8 +16,5 @@ content-type: application/json
     "max_players": 6,
     "min_age": 10,
     "duration": "45 minutes",
-    "picture_url": "https://cdn3.philibertnet.com/466405-large_default/villainous.jpg",
-    "author_id": 1,
-    "editor_id": 1,
-    "difficulty_id": 1
+    "picture_url": "https://cdn3.philibertnet.com/466405-large_default/villainous.jpg"
 }
