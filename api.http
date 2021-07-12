@@ -2,8 +2,11 @@
 
 GET http://localhost:3000/v1/
 
-### Find
+### Find all boardgames
 GET http://localhost:3000/v1/boardgames
+
+### Find all categories
+GET http://localhost:3000/v1/categories
 
 ### Ajout d'un boardgame
 
@@ -18,3 +21,4 @@ content-type: application/json
     "duration": "45 minutes",
     "picture_url": "https://cdn3.philibertnet.com/466405-large_default/villainous.jpg"
 }
+

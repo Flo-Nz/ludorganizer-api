@@ -18,4 +18,12 @@ CREATE FUNCTION new_boardgame(json) RETURNS boardgame AS $$
 	RETURNING *;
 $$ LANGUAGE sql;
 
+CREATE FUNCTION new_category(json) RETURNS category AS $$
+	INSERT INTO category ("name")
+	VALUES (
+		$1->>'name',
+	)
+	RETURNING *;
+$$ LANGUAGE sql;
+
 COMMIT;

@@ -17,4 +17,11 @@ CREATE FUNCTION update_boardgame(json) RETURNS boardgame AS $$
 	RETURNING *;
 $$ LANGUAGE sql;
 
+CREATE FUNCTION update_category(json) RETURNS category AS $$
+	UPDATE category SET 
+		"name" = $1->>'name', 
+	WHERE id = ($1->>'id')::int
+	RETURNING *;
+$$ LANGUAGE sql;
+
 COMMIT;

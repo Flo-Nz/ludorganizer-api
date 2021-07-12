@@ -27,7 +27,7 @@ Enfin, créer une base de données PostgreSQL et déployer le projet Sqitch dess
 
 ```bash
 createdb boardgame
-sqitch deploy db:ph:boardgame
+sqitch deploy db:pg:boardgame
 ```
 
 > Pensez à configurer PostgreSQL (ou à fournir les variables d'environnement nécessaires) pour que les commandes `createdb` et `sqitch` puissent s'exécuter correctement.
