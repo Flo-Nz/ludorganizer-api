@@ -22,6 +22,28 @@ const controller = {
         } catch (error) {
             res.status(500).json(error.message);
         }
+    },
+
+    getOne: async (req, res) => {
+        try {
+            const id = parseInt(req.params.id);
+            const result = await Category.findOne(id);
+
+            res.json(result);
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+    },
+
+    delete: async (req, res) => {
+        try {
+            const id = parseInt(req.params.id);
+            const result = await Category.delete(id); 
+            
+            res.json(result);
+        } catch (error) {
+            
+        }
     }
 };
 

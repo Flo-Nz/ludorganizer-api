@@ -9,7 +9,7 @@ CREATE FUNCTION new_boardgame(json) RETURNS boardgame AS $$
 		($1->>'min_players')::pint,
 		($1->>'max_players')::pint,
 		($1->>'min_age')::pint,
-		($1 ->> 'duration')::interval,
+		($1 ->> 'duration')::pint,
 		$1 ->> 'picture_url',
 		($1 ->> 'author_id')::int,
 		($1 ->> 'editor_id')::int,
@@ -21,7 +21,15 @@ $$ LANGUAGE sql;
 CREATE FUNCTION new_category(json) RETURNS category AS $$
 	INSERT INTO category ("name")
 	VALUES (
-		$1->>'name',
+		$1->>'name'
+	)
+	RETURNING *;
+$$ LANGUAGE sql;
+
+CREATE FUNCTION new_theme(json) RETURNS theme AS $$
+	INSERT INTO theme ("name")
+	VALUES (
+		$1->>'name'
 	)
 	RETURNING *;
 $$ LANGUAGE sql;

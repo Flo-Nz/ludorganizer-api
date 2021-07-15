@@ -20,7 +20,7 @@ class Boardgame {
     }
 
     static async findAll() {
-        const { rows } = await db.query('SELECT * FROM boardgame;');
+        const { rows } = await db.query('SELECT * FROM boardgames;');
 
         return rows.map(bg => new Boardgame(bg));
     }

@@ -25,5 +25,7 @@ router.post('/boardgames', validateBody(bgSchema), boardgameController.addOne);
  */
 router.get('/categories', categoryController.getAll);
 router.post('/categories', validateBody(catSchema), categoryController.addOne);
+router.get('/categories/:id', categoryController.getOne);
+router.delete('/categories/:id', categoryController.delete);
 
 module.exports = router;

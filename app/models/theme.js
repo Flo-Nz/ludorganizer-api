@@ -1,7 +1,7 @@
 const db = require('../database');
 
 
-class Category {
+class Theme {
 
     constructor(data = {}) {
         for (const prop in data) {
@@ -10,33 +10,33 @@ class Category {
     }
 
     static async findOne(id) {
-        const { rows } = await db.query('SELECT * FROM category WHERE id = $1',[id]);
+        const { rows } = await db.query('SELECT * FROM theme WHERE id = $1',[id]);
 
         if (rows[0]) {
-            return new Category(rows[0]);
+            return new Theme(rows[0]);
         } else {
-            throw new Error(`No category with id "${id}"`)
+            throw new Error(`No theme with id "${id}"`)
         }
     }
 
     static async findAll() {
-        const { rows } = await db.query('SELECT * FROM category;');
+        const { rows } = await db.query('SELECT * FROM theme;');
 
-        return rows.map(cat => new Category(cat));
+        return rows.map(theme => new Theme(theme));
     }
 
     async save() {
         if (this.id) {
             // UPDATE
             try {
-                const { rows } = await db.query('SELECT * FROM update_category($1);', [this]);
+                const { rows } = await db.query('SELECT * FROM update_theme($1);', [this]);
             } catch (error) {
                 throw new Error(err.detail)
             }
         } else {
             try {
                 // INSERT
-                const { rows } = await db.query('SELECT * FROM new_category($1);', [this]);
+                const { rows } = await db.query('SELECT * FROM new_theme($1);', [this]);
 
                 this.id = rows[0].id;
 
@@ -49,7 +49,7 @@ class Category {
 
     static async delete(id) {
         try {
-            const { rows } = await db.query('DELETE FROM category WHERE id = $1;', [id]);
+            const { rows } = await db.query('DELETE FROM theme WHERE id = $1;', [id]);
             return rows[0];
         } catch (error) {
             throw new Error(err.detail);
