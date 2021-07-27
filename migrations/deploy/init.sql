@@ -37,7 +37,8 @@ CREATE TABLE member (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "username" text NOT NULL UNIQUE,
     "password" text NOT NULL,
-    "email" email NOT NULL UNIQUE
+    "email" email NOT NULL UNIQUE,
+    "admin" boolean NOT NULL DEFAULT false
 );
 
 CREATE TABLE boardgame (

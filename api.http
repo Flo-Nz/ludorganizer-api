@@ -5,6 +5,12 @@ GET http://localhost:3000/v1/
 ### Find all boardgames
 GET http://localhost:3000/v1/boardgames
 
+### Find one boardgame
+GET http://localhost:3000/v1/boardgames/1
+
+### Find all boardgames by category
+GET http://localhost:3000/v1/bgbycat/6
+
 ### Find all categories
 GET http://localhost:3000/v1/categories
 
@@ -18,9 +24,13 @@ content-type: application/json
     "min_players": 2,
     "max_players": 6,
     "min_age": 10,
-    "duration": "45 minutes",
+    "duration": 45,
     "picture_url": "https://cdn3.philibertnet.com/466405-large_default/villainous.jpg"
 }
+
+### Supression d'un boardgame
+
+DELETE http://localhost:3000/v1/boardgames/4
 
 ### Ajout d'une categorie
 

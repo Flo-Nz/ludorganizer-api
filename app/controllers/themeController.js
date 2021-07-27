@@ -1,14 +1,14 @@
-const Boardgame = require('../models/boardgame');
+const Theme = require('../models/theme');
 
 
 const controller = {
     addOne: async (req, res) => {
-        const newBoardgame = new Boardgame(req.body);
+        const newTheme = new Theme(req.body);
 
         try {
-            await newBoardgame.save();
+            await newTheme.save();
 
-            res.json(newBoardgame);
+            res.json(newTheme);
         } catch (err) {
             res.status(500).json(err.message);
         }
@@ -16,7 +16,7 @@ const controller = {
 
     getAll: async (req, res) => {
         try {
-            const result = await Boardgame.findAll();
+            const result = await Theme.findAll();
 
             res.json(result);
         } catch (error) {
@@ -27,18 +27,7 @@ const controller = {
     getOne: async (req, res) => {
         try {
             const id = parseInt(req.params.id);
-            const result = await Boardgame.findOne(id);
-
-            res.json(result);
-        } catch (error) {
-            res.status(500).json(error.message);
-        }
-    },
-
-    findByCat: async (req, res) => {
-        try {
-            const catId = parseInt(req.params.id);
-            const result = await Boardgame.findByCat(catId);
+            const result = await Theme.findOne(id);
 
             res.json(result);
         } catch (error) {
@@ -49,10 +38,9 @@ const controller = {
     delete: async (req, res) => {
         try {
             const id = parseInt(req.params.id);
-            const result = await Boardgame.delete(id); 
+            const result = await Theme.delete(id); 
             
             res.json(result);
-            
         } catch (error) {
             
         }

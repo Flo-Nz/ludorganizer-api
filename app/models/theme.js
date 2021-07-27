@@ -49,6 +49,7 @@ class Theme {
 
     static async delete(id) {
         try {
+            await db.query('DELETE FROM game_has_theme WHERE theme_id = $1;', [id]);
             const { rows } = await db.query('DELETE FROM theme WHERE id = $1;', [id]);
             return rows[0];
         } catch (error) {
@@ -57,4 +58,4 @@ class Theme {
     }
 }
 
-module.exports = Category;
+module.exports = Theme;

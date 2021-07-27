@@ -5,7 +5,7 @@ const schema = Joi.object({
     min_players: Joi.number().integer().required(),
     max_players: Joi.number().integer().required(),
     min_age: Joi.number().integer().required(),
-    duration: Joi.string().required(),
+    duration: Joi.number().integer().required(),
     picture_url: Joi.string(),
     author_id: Joi.number().integer(),
     editor_id: Joi.number().integer(),

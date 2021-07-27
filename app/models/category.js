@@ -49,6 +49,7 @@ class Category {
 
     static async delete(id) {
         try {
+            await db.query('DELETE FROM game_has_category WHERE category_id = $1;', [id]);
             const { rows } = await db.query('DELETE FROM category WHERE id = $1;', [id]);
             return rows[0];
         } catch (error) {
