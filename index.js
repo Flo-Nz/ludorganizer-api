@@ -1,4 +1,5 @@
 require('dotenv').config();
+const sanitize = require('./app/services/sanitizer');
 
 const express = require('express');
 
@@ -13,6 +14,7 @@ const port = process.env.PORT || 5555;
 app.use(cors());
 
 app.use(express.json());
+app.use(sanitize);
 
 app.use('/v1', router);
 

@@ -2,8 +2,20 @@
 
 GET http://localhost:3000/v1/
 
-### Find
+### Find all boardgames
 GET http://localhost:3000/v1/boardgames
+
+### Find one boardgame
+GET http://localhost:3000/v1/boardgames/1
+
+### Find all boardgames by category
+GET http://localhost:3000/v1/bgbycat/6
+
+### Find all categories
+GET http://localhost:3000/v1/categories
+
+### Find all difficulties
+GET http://localhost:3000/v1/difficulties
 
 ### Ajout d'un boardgame
 
@@ -15,6 +27,69 @@ content-type: application/json
     "min_players": 2,
     "max_players": 6,
     "min_age": 10,
-    "duration": "45 minutes",
+    "duration": 45,
     "picture_url": "https://cdn3.philibertnet.com/466405-large_default/villainous.jpg"
 }
+
+### Supression d'un boardgame
+
+DELETE http://localhost:3000/v1/boardgames/7
+
+### Ajout d'une categorie
+
+POST http://localhost:3000/v1/categories
+content-type: application/json
+
+{
+    "name": "Role-play"
+}
+
+### SUPPRESSION d'une categorie
+
+DELETE http://localhost:3000/v1/categories/6
+content-type: application/json
+
+### Ajout des catégories et themes
+
+POST http://localhost:3000/v1/boardgames/catortheme
+content-type: application/json
+
+{
+    "id": "1",
+    "categories": ["1","3"],
+    "themes": ["1", "2"]
+}
+
+### Sign up
+
+POST http://localhost:3000/v1/signup
+content-type: application/json
+
+{
+    "username": "Totoflo",
+    "email": "florian.nunez@gmail.com",
+    "password": "",
+    "passwordConfirm": ""
+}
+
+### Sign In
+
+POST http://localhost:3000/v1/signin
+content-type: application/json
+
+{
+    "username": "Totoflo",
+    "password": ""
+}
+
+### Sign In
+
+PATCH http://localhost:3000/v1/user
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMzMzc1ODI5LCJleHAiOjE2MzM0NjIyMjl9.RHvGNazkDQbkPidRe5-P1vFPTUIa_OEUpKdIeuNNJ2w
+
+{
+    "user_id": "1",
+    "email": "denko78@hotmail.com"
+}
+
