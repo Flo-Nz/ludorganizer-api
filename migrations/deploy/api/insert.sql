@@ -34,4 +34,23 @@ CREATE FUNCTION new_theme(json) RETURNS theme AS $$
 	RETURNING *;
 $$ LANGUAGE sql;
 
+CREATE FUNCTION new_member(json) RETURNS member AS $$
+	INSERT INTO member (username, password, email)
+	VALUES (
+		$1->>'username',
+		$1->>'password',
+		($1->>'email')::email
+	)
+	RETURNING *;
+$$ LANGUAGE sql;
+
+CREATE FUNCTION new_bookmark(json) RETURNS member_has_game AS $$
+	INSERT INTO member_has_game (member_id, game_id)
+	VALUES (
+		($1->>'member_id')::int,
+		($1->>'game_id')::int
+	)
+	RETURNING *;
+$$ LANGUAGE sql;
+
 COMMIT;

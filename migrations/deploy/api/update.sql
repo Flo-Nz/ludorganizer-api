@@ -31,4 +31,21 @@ CREATE FUNCTION update_theme(json) RETURNS theme AS $$
 	RETURNING *;
 $$ LANGUAGE sql;
 
+CREATE FUNCTION update_member(json) RETURNS member AS $$
+	UPDATE member SET 
+		username = $1->>'username', 
+		password = $1->>'password', 
+		email = ($1->>'email')::email
+	WHERE id = ($1->>'id')::int
+	RETURNING *;
+$$ LANGUAGE sql;
+
+CREATE FUNCTION update_bookmark(json) RETURNS member_has_game AS $$
+	UPDATE member_has_game SET  
+		game_count = ($1->>'game_count')::int
+	WHERE member_id = ($1->>'member_id')::int
+	AND game_id = ($1->>'game_id')::int
+	RETURNING *;
+$$ LANGUAGE sql;
+
 COMMIT;

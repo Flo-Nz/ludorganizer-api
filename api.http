@@ -14,6 +14,9 @@ GET http://localhost:3000/v1/bgbycat/6
 ### Find all categories
 GET http://localhost:3000/v1/categories
 
+### Find all difficulties
+GET http://localhost:3000/v1/difficulties
+
 ### Ajout d'un boardgame
 
 POST http://localhost:3000/v1/boardgames
@@ -30,7 +33,7 @@ content-type: application/json
 
 ### Supression d'un boardgame
 
-DELETE http://localhost:3000/v1/boardgames/4
+DELETE http://localhost:3000/v1/boardgames/7
 
 ### Ajout d'une categorie
 
@@ -46,4 +49,13 @@ content-type: application/json
 DELETE http://localhost:3000/v1/categories/6
 content-type: application/json
 
+### Ajout des catégories et themes
 
+POST http://localhost:3000/v1/boardgames/catortheme
+content-type: application/json
+
+{
+    "id": "1",
+    "categories": ["1","3"],
+    "themes": ["1", "2"]
+}

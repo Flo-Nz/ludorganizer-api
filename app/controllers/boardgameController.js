@@ -10,7 +10,11 @@ const controller = {
 
             res.json(newBoardgame);
         } catch (err) {
-            res.status(500).json(err.message);
+            if (err.message.includes('already exists')) {
+                res.status(409).json('Ce jeu existe déjà.');
+            } else {
+                res.status(500).json(err.message);
+            }
         }
     },
 
@@ -43,6 +47,16 @@ const controller = {
             res.json(result);
         } catch (error) {
             res.status(500).json(error.message);
+        }
+    },
+
+    gameHasCatOrTheme: async (req, res) => {
+        try {
+            const result = await Boardgame.gameHasCatOrTheme(req.body);
+
+            res.json(result);
+        } catch (error) {
+            res.status(500).json(error);
         }
     },
 

@@ -64,6 +64,8 @@ class Boardgame {
             // UPDATE
             try {
                 const { rows } = await db.query('SELECT * FROM update_boardgame($1);', [this]);
+                return rows.map(bg => new Boardgame(bg));
+
             } catch (error) {
                 throw new Error(err.detail)
             }
@@ -97,6 +99,42 @@ class Boardgame {
             } catch (err) {
                 throw new Error(err.detail);
             }
+        }
+    }
+
+    static async gameHasCatOrTheme(data) {
+        try {
+            // We will use this method for categories and themes because it's quite similar. First we try to select a row, if it already exists we do nothing. Otherwise we insert datas into the db.
+            const json = {categoriesSaved: 0, themesSaved: 0};
+
+            if (data.categories.length) {
+                for (const category of data.categories) {
+                    let { rows } = await db.query('SELECT * FROM game_has_category WHERE game_id = $1 AND category_id = $2;', [parseInt(data.id), parseInt(category)]);
+                    if (rows.length) {
+                        continue;
+                    } else {
+                        await db.query('INSERT INTO game_has_category (game_id, category_id) VALUES ($1, $2);', [parseInt(data.id), parseInt(category)]);
+                        json.categoriesSaved += 1;
+                    }
+                }
+            }
+
+            if (data.themes.length) {
+                for (const theme of data.themes) {
+                    let { rows } = await db.query('SELECT * FROM game_has_theme WHERE game_id = $1 AND theme_id = $2;', [parseInt(data.id), parseInt(theme)]);
+                    if (rows.length) {
+                        continue;
+                    } else {
+                        await db.query('INSERT INTO game_has_theme (game_id, theme_id) VALUES ($1, $2);', [parseInt(data.id), parseInt(theme)]);
+                        json.themesSaved += 1;
+                    }
+                }
+            }
+
+            return json;
+            
+        } catch (error) {
+            throw new Error(error);
         }
     }
 

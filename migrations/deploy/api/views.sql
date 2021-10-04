@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE VIEW boardgames AS (
-    SELECT boardgame.id, boardgame.name, boardgame.min_players, boardgame.max_players, boardgame.duration, boardgame.picture_url,
+    SELECT boardgame.id, boardgame.name, boardgame.min_players, boardgame.max_players, boardgame.duration, boardgame.picture_url, boardgame.min_age,
     array_to_json(array_remove(array_agg(DISTINCT categories), NULL)) AS categories,
     array_to_json(array_remove(array_agg(DISTINCT themes), NULL)) AS themes,
 	array_to_json(array_remove(array_agg(DISTINCT difficulty), NULL)) AS difficulty,
@@ -28,6 +28,7 @@ CREATE VIEW boardgames AS (
         SELECT id, "name" FROM theme
     ) AS themes ON themes.id = game_has_theme.theme_id
     GROUP BY boardgame.id
+    ORDER BY boardgame.name ASC
 );
 
 COMMIT;
