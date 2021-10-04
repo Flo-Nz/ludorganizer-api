@@ -59,3 +59,37 @@ content-type: application/json
     "categories": ["1","3"],
     "themes": ["1", "2"]
 }
+
+### Sign up
+
+POST http://localhost:3000/v1/signup
+content-type: application/json
+
+{
+    "username": "Totoflo",
+    "email": "florian.nunez@gmail.com",
+    "password": "",
+    "passwordConfirm": ""
+}
+
+### Sign In
+
+POST http://localhost:3000/v1/signin
+content-type: application/json
+
+{
+    "username": "Totoflo",
+    "password": ""
+}
+
+### Sign In
+
+PATCH http://localhost:3000/v1/user
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMzMzc1ODI5LCJleHAiOjE2MzM0NjIyMjl9.RHvGNazkDQbkPidRe5-P1vFPTUIa_OEUpKdIeuNNJ2w
+
+{
+    "user_id": "1",
+    "email": "denko78@hotmail.com"
+}
+

@@ -14,7 +14,7 @@ class User {
         if (rows[0]) {
             return new User(rows[0]);
         } else {
-            throw new Error(`No User with username "${username}"`);
+            return undefined;
         }
     }
 
