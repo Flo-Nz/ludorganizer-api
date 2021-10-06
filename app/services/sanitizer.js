@@ -4,7 +4,9 @@ const sanitizer = require('sanitizer');
 const sanitize = obj => {
     //pour chaque propriété de l'object, on va modifier la valeur stockée avec sanitizer pour nous protéger d'éventuelles injections
     for (const prop in obj) {
-        obj[prop] = sanitizer.escape(obj[prop]);
+        if (typeof obj[prop] === 'string') {
+            obj[prop] = sanitizer.escape(obj[prop]);
+        }
     }
 }
 
